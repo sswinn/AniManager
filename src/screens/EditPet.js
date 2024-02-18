@@ -40,7 +40,7 @@ const EditPet = ({navigation, route}) => // screen for editing pet details, as w
                             currentPet.pfp,
                             missing,
                             () => navigation.pop());
-                        console.log(petState);
+                        //console.log(petState);
                     }} 
                 >
                     <MaterialIcons

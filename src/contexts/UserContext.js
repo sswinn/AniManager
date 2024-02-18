@@ -44,10 +44,8 @@ export const UserProvider = ({children}) => {
 
     const addProfileState = (id, username, location, userId, callback) =>
     {
-        console.log("before if statement ",id);
         if ( !state.find((profile) => profile.id === id) ) // if user is not already in state
         {
-            console.log(id);
             dispatch({ type: "addProfileState", 
                 payload: { 
                     id, username, location, userId // add user info to state
@@ -69,7 +67,7 @@ export const UserProvider = ({children}) => {
 
     const addProfile = async (username, location, userId, callback) =>
     {
-        console.log(userId);
+        console.log("ADDING PROFILE: ",userId);
         let idreturn;
         await addDoc(profilesDb, {
             username: username,
@@ -80,7 +78,7 @@ export const UserProvider = ({children}) => {
             idreturn = docRef.id;
         })
         addProfileState(idreturn, username, location, userId);
-        console.log(state);
+        console.log("ADDED PROFILE STATE");
         if (callback) callback(idreturn);
     }
 
@@ -101,11 +99,9 @@ export const UserProvider = ({children}) => {
         const filteredData = profilesData.docs.map((doc) => ({
             ...doc.data(), id: doc.id
         }));
-        console.log("in context")
-        console.log(userId)
-        console.log(filteredData)
+        //console.log(filteredData)
         const foundProfile = filteredData.find((profile) => profile.userId === userId);
-        console.log(foundProfile)
+        //console.log(foundProfile)
         if (callback) callback(foundProfile);
     }
 

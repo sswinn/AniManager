@@ -15,7 +15,7 @@ const Profile = ({navigation}) =>
     const {deleteProfileState, profileState, updateProfile} = useContext(UserContext);
 
     const userid = auth.currentUser.uid;
-    console.log(profileState);
+    //console.log(profileState);
     const profile = profileState.find((prf) => prf.userId == userid);
 
     const [username, setUsername] = useState(profile.username);

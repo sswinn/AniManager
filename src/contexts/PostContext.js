@@ -201,9 +201,9 @@ export const PostProvider = ({children}) => {
             const filteredData = profilesData.docs.map((doc) => ({
                 ...doc.data(), id: doc.id // get all records from profiles db 
             }));
-            console.log(filteredData);
+            //console.log(filteredData);
             const profile = filteredData.find(user => user.userId === post.userId); // find if the userid and the current post's userid matches
-            console.log(profile);
+            //console.log(profile);
             if (callback) callback(profile.username);
         } catch (e) {console.log("Error getting username by post")}
     }
